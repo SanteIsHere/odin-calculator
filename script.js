@@ -49,17 +49,29 @@ const factorial = function(num) {
   return result;
 };
 
+const onNumPress = function(num) {
+  // "num" parameter represents a pressed number button (div)
+  if (numDisplay.textContent.length <= 1) {
+    numDisplay.textContent = num.target.textContent
+  } else {
+    numDisplay.textContent += num.target.textContent
+  }
+}
+
 function gridButtons() {
   let x = 0
   let buttSlice
+  let butt
   for (let i = 0; i < buttons.length; i+=4) {
     buttSlice = buttons.slice(i,i+4)
     console.log(buttSlice)
     for (let button of buttSlice) {
+      console.log(button, x)
       butt = document.createElement("div")
-      butt.textContent = String(button)
+      butt.innerHTML = button
+      butt.setAttribute("class", "butt")
+      butt.addEventListener("click", (e) => onNumPress(e))
       buttRows[x].appendChild(butt)
-      console.log(buttRows[x].childNodes)
     }
     x += 1
   }
@@ -67,5 +79,7 @@ function gridButtons() {
 
 const buttCont = document.getElementById("butt-cont")
 const buttRows = document.getElementsByClassName("col")
-const buttons = [7, 8, 9, "+", 4, 5, 6, "-", 1, 2, 3, "/", "=", 0, "CLR", "*"];
+const buttons = ["7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3", "/", "=", "0", "CLR", "*"];
+const numDisplay = document.getElementById("num-disp")
+
 gridButtons()
