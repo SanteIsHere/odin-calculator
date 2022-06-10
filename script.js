@@ -76,7 +76,10 @@ const onClear = function() {
 }
 
 const onBackspace = function() {
-  numDisplayText = numDisplayText.slice(0,numDisplayText.length-2).join()
+  if (numDisplay.textContent.length > 1) {
+    numDisplayText = numDisplayText.slice(0,numDisplayText.length-1);
+    numDisplay.textContent = numDisplayText
+  }
 }
 
 const operate = function() {
