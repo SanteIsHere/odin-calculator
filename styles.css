@@ -22,7 +22,7 @@ body {
 }
 
 #display {
-    border: 2px solid black;
+    border: 2px dashed black;
     width: 280px;
     height: 200px;
     margin-top: 20px;
