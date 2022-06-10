@@ -51,19 +51,21 @@ const factorial = function(num) {
 
 function gridButtons() {
   let x = 0
-  let cols = document.getElementsByClassName("col")
-  for(let i = 0; i < nums.length; i+=3) {
-    let numSlice = nums.slice(i,i+3)
-    for (let num of numSlice) {
+  let buttSlice
+  for (let i = 0; i < buttons.length; i+=4) {
+    buttSlice = buttons.slice(i,i+4)
+    console.log(buttSlice)
+    for (let button of buttSlice) {
       butt = document.createElement("div")
-      butt.textContent = String(num)
-      cols[x].appendChild(butt)
+      butt.textContent = String(button)
+      buttRows[x].appendChild(butt)
+      console.log(buttRows[x].childNodes)
     }
     x += 1
   }
 }
 
 const buttCont = document.getElementById("butt-cont")
-const nums = [7, 4, 1, 8, 5, 2, 9, 6, 3];
-const ops = ["+", "-", "*", "/"];
+const buttRows = document.getElementsByClassName("col")
+const buttons = [7, 8, 9, "+", 4, 5, 6, "-", 1, 2, 3, "/", "=", 0, "CLR", "*"];
 gridButtons()
