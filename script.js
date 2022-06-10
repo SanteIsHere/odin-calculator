@@ -141,8 +141,7 @@ function gridOps() {
   }
 }
 
-const buttCont = document.getElementById("op-cont")
-const buttRows = document.getElementsByClassName("col")
+const buttRows = document.getElementsByClassName("butt-row")
 const buttons = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "=", "0", "CLR"];
 const ops = ["+", "-", "*", "/"]
 const numDisplay = document.getElementById("num-disp")
