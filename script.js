@@ -77,6 +77,8 @@ const onClear = function() {
 
 const onBackspace = function() {
   if (numDisplay.textContent.length > 1) {
+    // Re-assign numDisplayText the slice of original 
+    //  numDisplayText up to last number to emulate backspace
     numDisplayText = numDisplayText.slice(0,numDisplayText.length-1);
     numDisplay.textContent = numDisplayText
   }
@@ -84,13 +86,14 @@ const onBackspace = function() {
 
 const operate = function() {
   // Only supports two number operations currently
-  const regexPatt = /((?<num1>\d+)(?<op>[\+\-\/\*])(?<num2>\d+))/
+  const regexPatt = /(?<compexpr>(?<num1>\d+)(?<op>[\+\-\/\*])(?<num2>\d+))/
   let matchResult = numDisplay.textContent.match(regexPatt)
   let opMap = new Map([["+", add], ["*", multiply], ["-", subtract], ["/", divide]])
   console.log(matchResult)
-  let result = opMap.get(matchResult.groups.op)
-  (Number(matchResult.groups.num1), Number(matchResult.groups.num2))
+  let result = String(opMap.get(matchResult.groups.op)
+  (Number(matchResult.groups.num1), Number(matchResult.groups.num2)))
   console.log(result)
+  numDisplayText = String(result)
   numDisplay.textContent = String(result)
 }
 
